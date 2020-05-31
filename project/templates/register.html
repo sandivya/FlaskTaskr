@@ -1,0 +1,63 @@
+{% extends "__base.html" %}
+{% block content %}
+
+  <h1>Welcome to FlaskTaskr</h1>
+<hr>
+<br>
+  <h5>Please register to use FlaskTaskr</h5>
+  <div class="half-width">
+    <form method="POST" action="">
+      {{ form.csrf_token }}
+      <div class="input-group">
+        {{ form.name(placeholder="Name", size=30) }}
+        {% if form.name.errors %}
+          <span class="error">
+            {% for error in form.name.errors %}
+              {{error}}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="input-group">
+        {{ form.email(placeholder="Email", size=30)}}
+        {% if form.email.errors %}
+          <span class="error">
+            {% for error in form.email.errors %}
+              {{error}}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="input-group">
+        {{ form.password(placeholder="Password", size=30)}}
+        {% if form.password.errors %}
+          <span class="error">
+            {% for error in form.password.errors %}
+              {{error}}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="input-group">
+        {{ form.confirm(placeholder="Confirm Password", size=30) }}
+        {% if form.confirm.errors %}
+          <span class="error">
+            {% for error in form.confirm.errors %}
+              {{error}}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="input-group">
+        <button class="btn btn-dark" type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+
+  <br>
+
+  <div class="">
+    <em>Already registered?</em> Click <a href="/"><strong>here</strong></a> to login.
+  </div>
+
+{% endblock %}

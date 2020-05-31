@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Welcome to FlaskTaskr!!!</title>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="static\css\bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/"><h4>FlaskTaskr</h4></a>
+
+                    <ul class="navbar-nav navbar-left">
+                        {% if not session.logged_in %}
+                            <li class="nav-item"><a class="nav-link" href="/register">Signup</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                    {% if session.logged_in %}
+                        <ul class="navbar-nav navbar-right">
+                            <li class="nav-item active"><a class="nav-link"><b>Welcome, {{username}}!</b></a></li>
+                        </ul>
+                    {% endif %}
+
+            </div>
+
+        </div>
+        <br>
+
+        <div class="container">
+
+            <div class="content">
+
+                {% for message in get_flashed_messages() %} <br>
+                <div class="alert alert-success" role="alert"><b>{{ message }}</b>
+                </button>
+                </div>
+
+                {% endfor %}
+
+                {% if error %}
+                <br><div class="alert alert-danger"><strong>Error:</strong> {{ error }}
+                </div>
+                {% endif %}
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+            <div class="footer">
+                <hr>
+                    <p> <a target="_blank" href="https://github.com/sandivya/RP-Web-Development/tree/master/flasktaskr">Sandivya's GitHub</a></p>
+            </div>
+
+        </div>
+
+        <!--
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        -->
+
+        <script src="project\static\js\bootstrap.js"></script>
+        <script src="static\js\jquery-3.5.1.min.js"></script>
+        <script src="static\js\popper.min.js"></script>
+
+    </body>
+</html>
+
+
+
+
+

@@ -1,0 +1,41 @@
+{% extends "__base.html" %}
+{% block content %}
+
+  <h1>Welcome to FlaskTaskr</h1>
+<hr>
+<br>
+  <h5>Please login to access your task list.</h5>
+  <div class="half-width">
+    <form method="post" action="/">
+      {{ form.csrf_token }}
+      <div class="input-group">
+        {{ form.email(placeholder="Email", size=30) }}
+        {% if form.email.errors %}
+          <span class="error">
+            {% for error in form.email.errors %}
+              {{error}}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="input-group">
+        {{ form.password(placeholder="Password", size=30) }}
+        {% if form.password.errors %}
+          <span class="error">
+            {% for error in form.password.errors %}
+              {{error}}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div>
+        <button class="btn btn-dark" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+<br>
+  <div>
+    <em>Need an account? </em><a href="/register"><strong>Signup!!</strong></a>
+  </div>
+
+{% endblock %}

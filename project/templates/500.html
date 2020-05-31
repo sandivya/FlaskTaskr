@@ -1,0 +1,9 @@
+{% extends "__base.html" %}
+{% block content %}
+
+<h3>Something broke inside, we have a 500</h3>
+<p>Don't worry, code doctors are on the way.</p>
+<br>
+<p><a href="{{url_for('users.login')}}">Let's go back home</a></p>
+
+{% endblock %}
