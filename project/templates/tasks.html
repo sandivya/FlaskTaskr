@@ -104,7 +104,7 @@
           <td>{{ task.posted_date }}</td>
           <td>{{ task.poster.name }}</td>
           <td>
-           {% if task.poster.email == session.email == session.username or session.role == "admin" %}
+           {% if task.poster.email == session.email or session.role == "admin" %}
              <a href="{{ url_for('tasks.delete_entry', task_id = task.task_id) }}"><strong>Delete</strong></a>
             {% endif %}
           </td>
