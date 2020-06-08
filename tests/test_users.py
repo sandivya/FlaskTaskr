@@ -74,7 +74,7 @@ class UsersTests(unittest.TestCase):
     def test_users_can_login(self):
         self.register('Michael', 'michael@realpython.com', 'python', 'python')
         response = self.login('michael@realpython.com', 'python')
-        self.assertIn(b'Welcome!', response.data)
+        self.assertIn(b'Login Successful!', response.data)
 
     def test_invalid_form_data(self):
         self.register('Michael', 'michael@realpython.com', 'python', 'python')
@@ -84,7 +84,7 @@ class UsersTests(unittest.TestCase):
     def test_form_is_present_on_register_page(self):
         response = self.app.get('/register')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Please register to access the task list.', response.data)
+        self.assertIn(b'Please register to use FlaskTaskr', response.data)
 
     def test_user_registeration(self):
         self.app.get('/register', follow_redirects=True)
